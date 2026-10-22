@@ -1,0 +1,32 @@
+{
+  "generatedAt": "2026-10-22T10:31:49.269Z",
+  "network": "Ganache Local",
+  "chainId": 1337,
+  "contractAddress": "0xC89Ce4735882C9F0f0FE26686c53074E09B0D550",
+  "validTransaction": {
+    "description": "Owner issued a new academic certificate",
+    "transactionHash": "0x6228f59803cf36160d14afc0a5ad57e3af13793052914c85d8daf82386a73f86",
+    "blockNumber": 6,
+    "status": "Success",
+    "gasUsed": "141846"
+  },
+  "retrievedBlockchainData": {
+    "certificateReference": "CERT-2026-001",
+    "studentName": "Aarav Sharma",
+    "courseName": "Blockchain Technology",
+    "issuedAt": "2026-10-22T10:31:49.000Z",
+    "issuer": "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1",
+    "revoked": false,
+    "exists": true
+  },
+  "invalidInputTest": {
+    "input": "Duplicate certificate ID",
+    "observedResult": "Certificate already exists",
+    "outcome": "Passed - transaction rejected"
+  },
+  "unauthorisedInputTest": {
+    "input": "Non-owner attempted to revoke a certificate",
+    "observedResult": "Only the institution owner can perform this action",
+    "outcome": "Passed - transaction rejected"
+  }
+}
