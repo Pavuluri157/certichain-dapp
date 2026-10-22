@@ -1,0 +1,21 @@
+{
+  "name": "certichain-dapp",
+  "version": "1.0.0",
+  "private": true,
+  "description": "An Ethereum DApp for issuing, verifying, and revoking academic certificates.",
+  "scripts": {
+    "compile": "node scripts/compile.js",
+    "test": "mocha --timeout 20000",
+    "ganache": "ganache --server.port 7545 --wallet.deterministic --chain.chainId 1337",
+    "deploy": "node scripts/deploy.js",
+    "serve": "http-server frontend -p 8080 -c-1"
+  },
+  "devDependencies": {
+    "chai": "^4.5.0",
+    "ethers": "^6.15.0",
+    "ganache": "^7.9.2",
+    "http-server": "^14.1.1",
+    "mocha": "^11.7.4",
+    "solc": "^0.8.30"
+  }
+}
