@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Issue and verify academic certificates on Ethereum." />
+    <title>CertiChain</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="CertiChain home">
+          <span class="brand-mark">C</span>
+          <span>CertiChain</span>
+        </a>
+        <button id="connectButton" class="wallet-button">Connect MetaMask</button>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div>
+            <p class="eyebrow">Ethereum certificate registry</p>
+            <h1>Credentials that can be verified, not merely claimed.</h1>
+            <p class="hero-copy">Institutions issue tamper-resistant academic certificates. Students and employers verify them instantly from the blockchain.</p>
+          </div>
+          <div class="network-card">
+            <span class="status-dot" id="statusDot"></span>
+            <div>
+              <span class="status-label">Wallet status</span>
+              <strong id="walletStatus">Not connected</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="stats" aria-label="Registry information">
+          <div><span>Network</span><strong id="networkName">Waiting for wallet</strong></div>
+          <div><span>Contract</span><strong id="contractAddress">Not loaded</strong></div>
+          <div><span>Issued records</span><strong id="certificateCount">—</strong></div>
+        </section>
+
+        <section class="workspace">
+          <nav class="tabs" aria-label="DApp actions">
+            <button class="tab active" data-tab="verify">Verify</button>
+            <button class="tab" data-tab="issue">Issue</button>
+            <button class="tab" data-tab="revoke">Revoke</button>
+          </nav>
+
+          <div id="verify" class="panel active">
+            <div class="panel-heading">
+              <p class="step">Public lookup</p>
+              <h2>Verify a certificate</h2>
+              <p>Enter the certificate reference supplied by the issuing institution.</p>
+            </div>
+            <form id="verifyForm">
+              <label for="verifyId">Certificate ID</label>
+              <div class="inline-form">
+                <input id="verifyId" placeholder="e.g. CERT-2026-001" required />
+                <button type="submit" class="primary">Check blockchain</button>
+              </div>
+            </form>
+            <div id="certificateResult" class="result empty">No certificate loaded yet.</div>
+          </div>
+
+          <div id="issue" class="panel">
+            <div class="panel-heading">
+              <p class="step">Institution action</p>
+              <h2>Issue a certificate</h2>
+              <p>Only the wallet that deployed the contract can create a record.</p>
+            </div>
+            <form id="issueForm" class="form-grid">
+              <label for="issueId">Certificate ID</label>
+              <input id="issueId" placeholder="CERT-2026-001" required />
+              <label for="studentName">Student name</label>
+              <input id="studentName" placeholder="Full name" required />
+              <label for="courseName">Course name</label>
+              <input id="courseName" placeholder="Blockchain Technology" required />
+              <button type="submit" class="primary">Issue on Ethereum</button>
+            </form>
+          </div>
+
+          <div id="revoke" class="panel">
+            <div class="panel-heading">
+              <p class="step">Institution action</p>
+              <h2>Revoke a certificate</h2>
+              <p>The on-chain record remains visible and is clearly marked as revoked.</p>
+            </div>
+            <form id="revokeForm">
+              <label for="revokeId">Certificate ID</label>
+              <div class="inline-form">
+                <input id="revokeId" placeholder="CERT-2026-001" required />
+                <button type="submit" class="danger">Revoke certificate</button>
+              </div>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <div id="toast" role="status" aria-live="polite"></div>
+      <footer>CertiChain · Academic demonstration DApp · Ethereum + Solidity</footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/ethers@6.15.0/dist/ethers.umd.min.js"></script>
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
